@@ -1,0 +1,84 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Brython</title>
+  <link rel="stylesheet" href="./brython/assets/brython.css">
+  <link rel="stylesheet" href="./brython/assets/console.css">
+
+  <script type="text/javascript" src="./brython/assets/brython.js"></script>
+  <script type="text/javascript" src="./brython/assets/brython_stdlib.js"></script>
+  <script type="text/javascript" src="./brython/assets/builtins_docstrings.js"></script>
+
+  <script type="text/javascript" src="./brython/editor/ace/ace.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./brython/editor/ace/ext-language_tools.js" charset="utf-8"></script>
+
+  <script type="text/python3" src="./main.py" id="tests_editor"></script>
+
+  <script>
+    function run_js() {
+      var cons = document.getElementById("console")
+      var jscode = cons.value
+      var t0 = (new Date()).getTime()
+      eval(jscode)
+      var t1 = (new Date()).getTime()
+      console.log("Javascript code run in " + (t1 - t0) + " ms")
+    }
+  </script>
+</head>
+
+<body onload="brython({debug:1})">
+  <!-- <div id="main_container"></div> -->
+  <div id="tools">
+    <span id="menu"></span>
+    <!-- <span class="logo"><a href="/index.html">brython</a></span> -->
+    <label id="debug">&nbsp;调试</label>
+    <input type="checkbox" id="set_debug" checked="">
+    <label id="output">&nbsp;输出面板</label>
+    <input type="checkbox" id="set_output" checked="">
+    <!-- <label id="language">语言</label> -->
+    <!-- <span id="sel_lang"></span> -->
+    <!-- <label id="theme">主题</label> -->
+    <!-- <span id="sel_theme"></span> -->
+    <span id="version_label">&nbsp;Brython 版本: </span>
+    <span id="version"></span>
+    <!-- <button id="load_script">导入</button> -->
+    <!-- <button id="clear">清空</button> -->
+    <!-- <button id="run"> ▶ 运行</button> -->
+    <!-- <button id="show_console">Python</button> -->
+    <!-- <button id="show_js">Javascript</button> -->
+    <!-- <button id="share_code">分享</button> -->
+  </div>
+
+  <table id="container">
+    <tbody>
+      <tr>
+        <td id="left">
+          <div id="editor"></div>
+        </td>
+        <td id="separator"></td>
+        <td id="right">
+          <textarea id="console" autocomplete="off"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Python code editor uses <a href="https://ace.c9.io/" target="_blank">Ace</a>.
+        </td>
+        <td></td>
+        <td>
+          <a href="./brython/tests/index.html" id="test_suite">Tests suite</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+</body>
+
+</html>
