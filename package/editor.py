@@ -10,11 +10,6 @@ import browser.widgets.dialog as dialog
 
 from package import utils, config
 
-# set height of container to 75% of screen
-# _height = document.documentElement.clientHeight
-# _s = document['container']
-# _s.style.height = '%spx' % int(_height * 0.85)
-
 href = document.location.href
 protocol, rest = href.split("://")
 host, addr = rest.split("/", 1)
@@ -287,5 +282,4 @@ def refresh_warp():
 
 # 更改折叠状态
 def change_wrap(*args):
-    # editor.setWrapBehavioursEnabled(not editor.getWrapBehavioursEnabled())
     editor.session.setUseWrapMode(not editor.session.getUseWrapMode())

@@ -6,12 +6,6 @@ from package import editor
 __BRYTHON__.language = 'zh-cn'
 
 language, theme = header.show()
-# qs_lang, language = header.show()
-# print(qs_lang, language)
-
-document["test_suite"].href = f"brython/tests/index.html?lang={language}"
-
-# other translations
 
 trans = {
     'report_bugs': {
@@ -234,14 +228,3 @@ run_menu.add_item(
 
 # 加载存档
 editor.load(0)
-
-# editor.ElementMove(document["menu"])
-
-# next functions are defined in editor.py
-# document['load'].bind('click', editor.load)
-# document['clear'].bind('click', editor.clear)
-# document['show_js'].bind('click', editor.show_js)
-# document['share_code'].bind('click', editor.share_code)
-# Create a lambda around editor.run() so that the event object is not passed to it
-# document['run'].bind('click', lambda *args: editor.run())
-# document['show_console'].bind('click', editor.show_console)

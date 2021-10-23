@@ -1,14 +1,7 @@
 from browser import window, document
 import browser.widgets.menu as menu
 
-href = document.location.href
-protocol, rest = href.split("://")
-host, addr = rest.split("/", 1)
-# print(protocol, rest, host, addr)
-
-
-if protocol == "http" and host.endswith("brython"):
-    document.location.href = f"https://{rest}"
+import config
 
 editor = window.ace.edit("editor")
 
@@ -165,6 +158,6 @@ def show(language=None, theme=None):
         qs_lang = document.query.getfirst("lang")
 
     language = qs_lang or "zh-cn"
-    theme = theme or "github"
+    theme = theme or "one_dark"
 
     return language, theme
