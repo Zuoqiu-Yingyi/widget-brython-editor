@@ -1,11 +1,22 @@
 from browser import document
 from browser.widgets.menu import Menu
-from package import header
 from package import editor
 
 __BRYTHON__.language = 'zh-cn'
 
-language, theme = header.show()
+
+def init(language=None, theme=None):
+
+    if language is None:
+        qs_lang = document.query.getfirst("lang")
+
+    language = qs_lang or "zh-cn"
+    theme = theme or "one_dark"
+
+    return language, theme
+
+
+language, theme = init()
 
 trans = {
     'report_bugs': {
