@@ -1,6 +1,6 @@
 # Brython 编辑器挂件 / widget-brython-editor
 
-一个简单可离线运行的的 Brython 编辑器挂件 `<br>`
+一个简单可离线运行的的 Brython 编辑器挂件<br>
 A sample, offline-running widget of Brython Editor.
 
 现已上架[思源笔记社区集市](https://github.com/siyuan-note/bazaar), 如果您需要订阅[思源笔记](https://github.com/siyuan-note/siyuan)增值服务，欢迎使用我的推荐码: **h0sc9rc**<br>
@@ -16,8 +16,7 @@ It is now on the shelves of the [Siyuan Notes Community Bazaar](https://github.c
   Edit and run Python scripts offline using the Brython library.
   - Brython 库所实现的模块详见 [Brython documentation](https://brython.info/static_doc/en/intro.html)<br>
     Details of the modules implemented by the library can be found at [Brython documentation](https://brython.info/static_doc/en/intro.html)
-- 顶部菜单栏<br>
-  Top menu bar
+- 顶部菜单栏 / Top menu bar
   - 文件菜单 / File menu
     - 加载文档 / Reload
       - 从块属性加载代码与运行结果<br>
