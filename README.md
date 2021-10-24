@@ -12,7 +12,9 @@ It is now on the shelves of the [Siyuan Notes Community Bazaar](https://github.c
 
 # 功能 / FUNCTION
 
-- 离线使用 Brython 库编辑并运行 Python 脚本<br>
+- 离线使用 Ace 编辑器编辑 Python 脚本<br>
+  Edit Python scripts offline using the Ace editor.
+- 离线使用 Brython 库运行 Python 脚本<br>
   Edit and run Python scripts offline using the Brython library.
   - Brython 库所实现的模块详见 [Brython documentation](https://brython.info/static_doc/en/intro.html)<br>
     Details of the modules implemented by the library can be found at [Brython documentation](https://brython.info/static_doc/en/intro.html)
