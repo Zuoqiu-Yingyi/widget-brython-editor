@@ -64,8 +64,8 @@ trans = {
         'en': 'clear output pannel',
     },
     'wrap': {
-        'zh-cn': '折叠长代码',
-        'en': 'wrap long code',
+        'zh-cn': '自动换行',
+        'en': 'line wrap',
     },
     'theme': {
         'zh-cn': '主题',
