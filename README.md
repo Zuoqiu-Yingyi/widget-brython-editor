@@ -65,6 +65,8 @@ It is now on the shelves of the [Siyuan Notes Community Bazaar](https://github.c
   - 输出面板 / Output panel
     - 折叠/展开输出面板<br>
       Fold/Unfold the output panel.
+- 自动保存/加载用户设置<br>
+  Automatically save/load user settings.
 
 # 开始 / START
 

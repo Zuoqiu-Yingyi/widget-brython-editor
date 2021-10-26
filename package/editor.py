@@ -18,19 +18,19 @@ has_ace = True
 try:
     editor = window.ace.edit("editor")
     # TODO 在这里设置编辑器默认模式
-    editor.setTheme("ace/theme/one_dark")
+    # editor.setTheme("ace/theme/one_dark")
     editor.session.setMode("ace/mode/python")
-    editor.session.setUseWrapMode(True)
-    editor.setFontSize(16)
+    # editor.session.setUseWrapMode(True)
+    # editor.setFontSize(16)
     editor.focus()
 
     editor.setOptions({
-        'enableLiveAutocompletion': True,
-        'highlightActiveLine': False,
+        # 'enableLiveAutocompletion': True,
+        'highlightActiveLine': True,
         'highlightSelectedWord': True
     })
 except Exception:
-    editor = html.TEXTAREA(rows=20, cols=70)
+    editor = html.TEXTAREA(rows=16, cols=76)
     document["editor"] <= editor
     def get_value(): return editor.value
     def set_value(x): editor.value = x
@@ -38,13 +38,31 @@ except Exception:
     editor.setValue = set_value
     has_ace = False
 
+
 if hasattr(window, 'localStorage'):
     from browser.local_storage import storage
 else:
     storage = None
 
-if 'set_debug' in document:
-    __BRYTHON__.debug = int(document['set_debug'].checked)
+
+def changeOutputPanelStatus(unfold):
+    if unfold:
+        document['left'].style.width = '50%'
+        document['right'].style.width = '50%'
+    else:
+        document['left'].style.width = '100%'
+        document['right'].style.width = '0%'
+
+
+def changeDebugStatus(debug):
+    if debug:
+        __BRYTHON__.debug = 1
+    else:
+        __BRYTHON__.debug = 0
+
+
+def str2bool(s):
+    return True if s.lower() == 'true' else False
 
 
 def reset_src():
@@ -52,19 +70,50 @@ def reset_src():
         code = document.query.getlist("code")[0]
         editor.setValue(code)
     else:
-        if storage is not None and "py_src" in storage:
-            editor.setValue(storage["py_src"])
-        else:
-            editor.setValue('for i in range(10):\n\tprint(i)')
+        py_src = storage['brython_editor_py_src'] \
+            if (storage is not None and 'brython_editor_py_src' in storage) \
+            else config.DEFAULT_USER_CONFIG.get('py_src')
+        theme = storage['brython_editor_theme'] \
+            if (storage is not None and 'brython_editor_theme' in storage) \
+            else config.DEFAULT_USER_CONFIG.get('theme')
+        font_size = int(storage['brython_editor_font_size']) \
+            if (storage is not None and 'brython_editor_font_size' in storage) \
+            else config.DEFAULT_USER_CONFIG.get('font_size')
+        wrap_flag = str2bool(storage['brython_editor_wrap_flag']) \
+            if (storage is not None and 'brython_editor_wrap_flag' in storage) \
+            else config.DEFAULT_USER_CONFIG.get('wrap_flag')
+        debug_flag = str2bool(storage['brython_editor_debug_flag']) \
+            if (storage is not None and 'brython_editor_debug_flag' in storage) \
+            else config.DEFAULT_USER_CONFIG.get('debug_flag')
+        output_flag = str2bool(storage['brython_editor_output_flag']) \
+            if (storage is not None and 'brython_editor_output_flag' in storage) \
+            else config.DEFAULT_USER_CONFIG.get('output_flag')
+
+        editor.setValue(py_src)
+        editor.setTheme(f"ace/theme/{theme}")
+        editor.setFontSize(font_size)
+        document['console'].style.fontSize = f"{font_size}px"
+        editor.setOptions({'enableLiveAutocompletion': wrap_flag})
+        document['set_debug'].checked = debug_flag
+        document['set_output'].checked = output_flag
+        changeDebugStatus(debug_flag)
+        changeOutputPanelStatus(output_flag)
+
     editor.scrollToRow(0)
     editor.gotoLine(0)
 
 
 def reset_src_area():
-    if storage and "py_src" in storage:
-        editor.value = storage["py_src"]
+    if storage and 'brython_editor_py_src' in storage:
+        editor.value = storage['brython_editor_py_src']
     else:
-        editor.value = 'for i in range(10):\n\tprint(i)'
+        editor.value = config.DEFAULT_USER_CONFIG.get('py_src')
+
+
+if has_ace:
+    reset_src()
+else:
+    reset_src_area()
 
 
 def clear_editor(ev):
@@ -99,10 +148,6 @@ if "console" in document:
     sys.stderr = cOut
 
 
-def to_str(xx):
-    return str(xx)
-
-
 info = sys.implementation.version
 version = '%s.%s.%s' % (info.major, info.minor, info.micro)
 if info.releaselevel == "rc":
@@ -132,10 +177,10 @@ def load(ev):
             document["console"].value = base64.b64decode(
                 data.get('custom-output').encode('utf-8')
             ).decode('utf-8')
-        
+
         editor.scrollToRow(0)
         editor.gotoLine(0)
-    
+
     utils.getBlockAttrs(
         id=config.siyuan_widget_block_id,
     ).then(
@@ -183,7 +228,7 @@ def run(*args):
     document["console"].value = ''
     src = editor.getValue()
     if storage is not None:
-        storage["py_src"] = src
+        storage['brython_editor_py_src'] = src
 
     t0 = time.perf_counter()
     try:
@@ -215,7 +260,7 @@ def share_code(ev):
             ok=True,
         )
     else:
-        href = window.location.href.rsplit("?", 1)[0]
+        # href = window.location.href.rsplit("?", 1)[0]
         query = document.query
         query["code"] = src
         url = f"https://brython.info/tests/editor.html{query}"
@@ -241,12 +286,6 @@ def share_code(ev):
             d.remove()
 
 
-if has_ace:
-    reset_src()
-else:
-    reset_src_area()
-
-
 # 更改语言
 def change_language(lang):
     head = f"{protocol}://{host}"
@@ -260,26 +299,44 @@ def change_theme(theme):
     old_theme = editor.getTheme()
     if theme != old_theme:
         editor.setTheme("ace/theme/%s" % theme)
+    storage['brython_editor_theme'] = theme
 
 
 # 更改字号
-def change_font_size(size):
+def change_font_size(font_size):
     try:
-        size = int(size)
+        font_size = int(font_size)
         old_size = editor.getFontSize()
-        if size != old_size:
-            editor.setFontSize(size)
-            document['console'].style.fontSize = f"{size}px"
+        if font_size != old_size:
+            editor.setFontSize(font_size)
+            document['console'].style.fontSize = f"{font_size}px"
+        storage['brython_editor_font_size'] = str(font_size)
     except Exception:
         pass
 
 
 # 刷新折叠状态
 def refresh_warp():
-    change_wrap()
-    change_wrap()
+    wrap_flag = editor.session.getUseWrapMode()
+    editor.session.setUseWrapMode(not wrap_flag)
+    editor.session.setUseWrapMode(wrap_flag)
 
 
 # 更改折叠状态
 def change_wrap(*args):
-    editor.session.setUseWrapMode(not editor.session.getUseWrapMode())
+    wrap_flag = not editor.session.getUseWrapMode()
+    editor.session.setUseWrapMode(wrap_flag)
+    storage['brython_editor_wrap_flag'] = str(wrap_flag)
+
+
+def set_debug(ev):
+    wrap_flag = ev.target.checked
+    changeDebugStatus(wrap_flag)
+    storage['brython_editor_debug_flag'] = str(wrap_flag)
+
+
+def set_output(ev):
+    output_flag = ev.target.checked
+    changeOutputPanelStatus(output_flag)
+    storage['brython_editor_output_flag'] = str(output_flag)
+    refresh_warp()

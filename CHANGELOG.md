@@ -1,5 +1,11 @@
 # 更改日志/CHANGE LOG
 
+## v0.1.1/2021-10-26
+
+- 将挂件名称更改为 `brython-editor` / Change the widget name to `brython-editor`.
+- 自动保存用户设置 / Save user settings automatically.
+- 自动加载用户设置 / Load user settings automatically.
+
 ## v0.1.0/2021-10-24
 
 - 新建项目 / Create a new project

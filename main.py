@@ -1,6 +1,7 @@
 from browser import document
 from browser.widgets.menu import Menu
-from package import editor
+
+from package import editor, config
 
 __BRYTHON__.language = 'zh-cn'
 
@@ -97,75 +98,18 @@ trans = {
     },
 }
 
-themes = {
-    "ambiance": "ambiance",
-    "chaos": "chaos",
-    "chrome": "chrome",
-    "clouds": "clouds",
-    "clouds midnight": "clouds_midnight",
-    "cobalt": "cobalt",
-    "crimson editor": "crimson_editor",
-    "dawn": "dawn",
-    "dracula": "dracula",
-    "dreamweaver": "dreamweaver",
-    "eclipse": "eclipse",
-    "github": "github",
-    "gob": "gob",
-    "gruvbox": "gruvbox",
-    "idle fingers": "idle_fingers",
-    "iplastic": "iplastic",
-    "katzenmilch": "katzenmilch",
-    "kr theme": "kr_theme",
-    "kuroir": "kuroir",
-    "merbivore": "merbivore",
-    "merbivore soft": "merbivore_soft",
-    "monokai": "monokai",
-    "mono industrial": "mono_industrial",
-    "nord dark": "nord_dark",
-    "one dark": "one_dark",
-    "pastel on dark": "pastel_on_dark",
-    "solarized dark": "solarized_dark",
-    "solarized light": "solarized_light",
-    "sqlserver": "sqlserver",
-    "terminal": "terminal",
-    "textmate": "textmate",
-    "tomorrow": "tomorrow",
-    "tomorrow night": "tomorrow_night",
-    "tomorrow night blue": "tomorrow_night_blue",
-    "tomorrow night bright": "tomorrow_night_bright",
-    "tomorrow night eighties": "tomorrow_night_eighties",
-    "twilight": "twilight",
-    "vibrant ink": "vibrant_ink",
-    "xcode": "xcode",
-}
+themes = config.THEMES
 
 for key in trans:
     if key in document:
         document[key].html = trans[key].get(language, trans[key]['zh-cn'])
 
 
-def set_debug(ev):
-    if ev.target.checked:
-        __BRYTHON__.debug = 1
-    else:
-        __BRYTHON__.debug = 0
-
-
-def set_output(ev):
-    if ev.target.checked:
-        document['left'].style.width = '50%'
-        document['right'].style.width = '50%'
-    else:
-        document['left'].style.width = '100%'
-        document['right'].style.width = '0%'
-    editor.refresh_warp()
-
-
 __BRYTHON__.debug = int(document['set_debug'].checked)
 
 # bindings
-document['set_debug'].bind('change', set_debug)
-document['set_output'].bind('change', set_output)
+document['set_debug'].bind('change', editor.set_debug)
+document['set_output'].bind('change', editor.set_output)
 
 menu = Menu(document["menu"])
 file_menu = menu.add_menu(trans['File'].get(language, trans['File']['zh-cn']))
