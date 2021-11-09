@@ -1,5 +1,11 @@
 # 更改日志/CHANGE LOG
 
+## v0.2.0/2021-11-09
+
+- 更新 Brython 版本至 [3.10.3](https://github.com/brython-dev/brython/releases/tag/3.10.3) / Update Brython version to [3.10.3](https://github.com/brython-dev/brython/releases/tag/3.10.3).
+- 添加代码文件导入/导出功能 / Add code file import/export feature.
+- 将控制台默认字体设置为 `Consolas` / Set the console default font to `Consolas`.
+
 ## v0.1.1/2021-10-26
 
 - 将挂件名称更改为 `brython-editor` / Change the widget name to `brython-editor`.

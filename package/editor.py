@@ -221,8 +221,6 @@ def save(ev):
 
 
 # run a script, in global namespace if in_globals is True
-
-
 def run(*args):
     global output
     document["console"].value = ''

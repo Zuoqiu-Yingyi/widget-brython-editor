@@ -16,7 +16,7 @@
   <script type="text/javascript" src="./brython/editor/ace/ace.js" charset="utf-8"></script>
   <script type="text/javascript" src="./brython/editor/ace/ext-language_tools.js" charset="utf-8"></script>
 
-  
+
   <script>
     function run_js() {
       var cons = document.getElementById("console")
@@ -26,7 +26,7 @@
       var t1 = (new Date()).getTime()
       console.log("Javascript code run in " + (t1 - t0) + " ms")
     }
-    </script>
+  </script>
 </head>
 
 <body onload="brython({debug:1})">
@@ -34,8 +34,14 @@
   <div id="tools">
     <span id="menu"></span>
     <!-- <span class="logo"><a href="/index.html">brython</a></span> -->
+    <!-- <label id="open_file">打开文件</label> -->
+    <input type="file" id="file">
+
+    <a id="save_file" href="#" download="brython.py">保存文件</a>
+
     <label id="debug">&nbsp;调试</label>
     <input type="checkbox" id="set_debug">
+
     <label id="output">&nbsp;输出面板</label>
     <input type="checkbox" id="set_output">
 
@@ -43,7 +49,7 @@
     <span id="version"></span>
 
   </div>
-  
+
   <table id="container">
     <tbody>
       <tr>
@@ -55,21 +61,23 @@
           <textarea id="console" autocomplete="off"></textarea>
         </td>
       </tr>
-      
+
       <tr>
         <td>
           Python code editor uses <a href="https://ace.c9.io/" target="_blank">Ace</a>.
         </td>
         <td></td>
         <td>
-          <a href="https://brython.info/tests/index.html" id="test_suite">Tests suite</a>
+          <a target="_blank" id="test" href="https://brython.info/tests/index.html">测试↗</a>
+          <a target="_blank" id="demo" href="https://brython.info/demo.html">示例↗</a>
+          <a target="_blank" id="document" href="https://brython.info/static_doc/en/intro.html">文档↗</a>
         </td>
       </tr>
     </tbody>
   </table>
-  
+
   <script type="text/python3" src="./main.py" id="tests_editor"></script>
-  
+
 </body>
 
 </html>

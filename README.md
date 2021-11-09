@@ -65,6 +65,12 @@ It is now on the shelves of the [Siyuan Notes Community Bazaar](https://github.c
   - 输出面板 / Output panel
     - 折叠/展开输出面板<br>
       Fold/Unfold the output panel.
+  - 打开本地文件 / Open the local file
+    - 使用文件选择对话框选择本地代码文件导入编辑器<br>
+      Use the file selection dialog box to select the local code file import editor.
+  - 保存为本地文件 / Save as a local file
+    - 将编辑器中的代码保存为本地文件<br>
+      Save the code in the editor as a local file.
 - 自动保存/加载用户设置<br>
   Automatically save/load user settings.
 
@@ -86,8 +92,8 @@ The widget has been put on the shelves at [SiYuan community bazaar](https://gith
 
 ## 源码 / SOURCE
 
-- [GitHub - brython-dev/brython: Brython (Browser Python) is an implementation of Python 3 running in the browser](https://github.com/brython-dev/brython)*[BSD\-3\-Clause License](https://github.com/brython-dev/brython/blob/master/LICENCE.txt)*
-- [ajaxorg/ace: Ace (Ajax.org Cloud9 Editor)](https://github.com/ajaxorg/ace)*[View license](https://github.com/ajaxorg/ace/blob/master/LICENSE)*
+- [GitHub - brython-dev/brython: Brython (Browser Python) is an implementation of Python 3 running in the browser](https://github.com/brython-dev/brython) *[BSD\-3\-Clause License](https://github.com/brython-dev/brython/blob/master/LICENCE.txt)*
+- [ajaxorg/ace: Ace (Ajax.org Cloud9 Editor)](https://github.com/ajaxorg/ace) *[View license](https://github.com/ajaxorg/ace/blob/master/LICENSE)*
 
 # 更改日志 / CHANGE LOG
 

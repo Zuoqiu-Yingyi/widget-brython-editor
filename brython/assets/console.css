@@ -1,7 +1,10 @@
 textarea {
-     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-     box-sizing: border-box;         /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
 }
 
 #container {
@@ -16,7 +19,7 @@ textarea {
     height: 100%;
 }
 
-#separator{
+#separator {
     /* width: 1%; */
     height: 100%;
 }
@@ -40,13 +43,14 @@ textarea {
 #console {
     width: 100%;
     height: 100%;
-    font-size:  16px;
+    font-size: 16px;
+    font-family: "Consolas";
     float: none;
     background-color: var(--dark-3);
     color: var(--clear-1);
 }
 
-#legend{
+#legend {
     position: absolute;
     margin-left: 5%;
     visibility: hidden;

@@ -1,4 +1,4 @@
-from browser import document
+from browser import document, window, bind
 from browser.widgets.menu import Menu
 
 from package import editor, config
@@ -42,11 +42,19 @@ trans = {
     },
     'load': {
         'zh-cn': '加载存档',
-        'en': 'reload',
+        'en': 'load',
     },
     'save': {
         'zh-cn': '保存存档',
         'en': 'save',
+    },
+    'open_file': {
+        'zh-cn': '打开文件',
+        'en': 'open file',
+    },
+    'save_file': {
+        'zh-cn': '保存文件',
+        'en': 'save file',
     },
     'debug': {
         'zh-cn': '调试',
@@ -80,9 +88,9 @@ trans = {
         'zh-cn': '字号',
         'en': 'font size',
     },
-    'File': {
-        'zh-cn': '文件',
-        'en': 'File',
+    'Archive': {
+        'zh-cn': '存档',
+        'en': 'Archive',
     },
     'Edit': {
         'zh-cn': '编辑',
@@ -95,6 +103,18 @@ trans = {
     'Run': {
         'zh-cn': '运行',
         'en': 'Run',
+    },
+    'test': {
+        'zh-cn': '测试↗',
+        'en': 'Test↗',
+    },
+    'demo': {
+        'zh-cn': '示例↗',
+        'en': 'Demo↗',
+    },
+    'document': {
+        'zh-cn': '文档↗',
+        'en': 'Document↗',
     },
 }
 
@@ -111,8 +131,46 @@ __BRYTHON__.debug = int(document['set_debug'].checked)
 document['set_debug'].bind('change', editor.set_debug)
 document['set_output'].bind('change', editor.set_output)
 
+
+open_btn = document["file"]
+save_btn = document["save_file"]
+
+file_name = "brython.py"
+
+
+@bind(open_btn, "input")
+def file_read(ev):
+    def onload(event):
+        """
+        Triggered when file is read. The FileReader instance is event.target.
+        The file content, as text, is the FileReader instance's "result" attribute.
+        """
+        editor.editor.setValue(event.target.result)
+        # set attribute "download" to file name
+        save_btn.attrs["download"] = file.name
+
+    # Get the selected file as a DOM File object
+    file = open_btn.files[0]
+    # Create a new DOM FileReader instance
+    reader = window.FileReader.new()
+    # Read the file content as text
+    reader.readAsText(file)
+    reader.bind("load", onload)
+
+
+@bind(save_btn, "click")
+def file_save(evt):
+    """
+    Create a "data URI" to set the downloaded file content
+    Cf. https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+    """
+    content = window.encodeURIComponent(editor.editor.getValue())
+    # set attribute "href" of save link
+    save_btn.attrs["href"] = f"data:text/plain;charset=UTF-8,{content}"
+
+
 menu = Menu(document["menu"])
-file_menu = menu.add_menu(trans['File'].get(language, trans['File']['zh-cn']))
+file_menu = menu.add_menu(trans['Archive'].get(language, trans['Archive']['zh-cn']))
 edit_menu = menu.add_menu(trans['Edit'].get(language, trans['Edit']['zh-cn']))
 setting_menu = menu.add_menu(trans['Setting'].get(language, trans['Setting']['zh-cn']))
 run_menu = menu.add_menu(trans['Run'].get(language, trans['Run']['zh-cn']))
@@ -121,6 +179,7 @@ file_menu.add_item(
     trans['load'].get(language, trans['load']['zh-cn']),
     callback=editor.load,
 )
+
 file_menu.add_item(
     trans['save'].get(language, trans['save']['zh-cn']),
     callback=editor.save,
