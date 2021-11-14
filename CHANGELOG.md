@@ -1,5 +1,9 @@
 # 更改日志/CHANGE LOG
 
+## v0.2.1/2021-11-15
+
+- 调整 `文档`, `示例` 与 `测试` 超链接位置 / Adjust the `Document`, `Demo` and `Test` hyperlink locations.
+
 ## v0.2.0/2021-11-09
 
 - 更新 Brython 版本至 [3.10.3](https://github.com/brython-dev/brython/releases/tag/3.10.3) / Update Brython version to [3.10.3](https://github.com/brython-dev/brython/releases/tag/3.10.3).
