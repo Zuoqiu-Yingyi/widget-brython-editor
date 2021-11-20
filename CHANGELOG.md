@@ -1,5 +1,10 @@
 # 更改日志/CHANGE LOG
 
+## v0.2.2/2021-11-20
+
+- 更新 README.md 错误链接 / Update the README.md error link.
+- 取消控制台面板的拼写检查 / Cancel spell checking for the console panel.
+
 ## v0.2.1/2021-11-15
 
 - 调整 `文档`, `示例` 与 `测试` 超链接位置 / Adjust the `Document`, `Demo` and `Test` hyperlink locations.
