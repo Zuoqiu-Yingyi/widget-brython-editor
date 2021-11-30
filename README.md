@@ -1,14 +1,15 @@
 # Brython 编辑器挂件 / widget-brython-editor
 
-<p align="center">
+<center>
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Zuoqiu-Yingyi/widget-brython-editor?include_prereleases)
 ![GitHub Release Date](https://img.shields.io/github/release-date/Zuoqiu-Yingyi/widget-brython-editor)
+![GitHub](https://img.shields.io/github/license/Zuoqiu-Yingyi/widget-brython-editor)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Zuoqiu-Yingyi/widget-brython-editor)
 ![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hy/Zuoqiu-Yingyi/widget-brython-editor?label=hits)
 ![GitHub all releases](https://img.shields.io/github/downloads/Zuoqiu-Yingyi/widget-brython-editor/total)
 
-</p>
+</center>
 
 一个简单可离线运行的的 Brython 编辑器挂件<br>
 A sample, offline-running widget of Brython Editor.
