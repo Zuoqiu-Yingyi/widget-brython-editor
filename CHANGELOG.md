@@ -1,5 +1,9 @@
 # 更改日志/CHANGE LOG
 
+## v0.2.3/2022-01-10
+
+- 更新 Brython 版本至 [3.10.4](https://github.com/brython-dev/brython/releases/tag/3.10.4) / Update Brython version to [3.10.4](https://github.com/brython-dev/brython/releases/tag/3.10.4).
+
 ## v0.2.2/2021-11-20
 
 - 更新 README.md 错误链接 / Update the README.md error link.
