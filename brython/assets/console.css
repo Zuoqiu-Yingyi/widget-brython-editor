@@ -46,8 +46,8 @@ textarea {
     font-size: 16px;
     font-family: "Consolas";
     float: none;
-    background-color: var(--dark-3);
-    color: var(--clear-1);
+    color: var(--b3-theme-on-surface);
+    background-color: var(--b3-theme-surface);
 }
 
 #legend {

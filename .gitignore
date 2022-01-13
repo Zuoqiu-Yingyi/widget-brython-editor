@@ -1,6 +1,8 @@
 brython/tests
 brython/src
 
+/release
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

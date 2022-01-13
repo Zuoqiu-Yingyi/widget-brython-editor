@@ -41,9 +41,26 @@ api_url = {
     'currentTime': "/api/system/currentTime",
 }
 
+# 输出面板主题颜色
+OUTPUT_THEME = {
+    'follow': {
+        'color': "var(--b3-theme-on-surface)",
+        'background-color': "var(--b3-theme-surface)",
+    },
+    'light': {
+        'color': "#1F1F1F",
+        'background-color': "#FFF",
+    },
+    'dark': {
+        'color': "#CCC",
+        'background-color': "#1F1F1F",
+    },
+}
+
 DEFAULT_USER_CONFIG = {
     'py_src': 'print(globals())\nprint(dir(__builtins__))',
     'theme': 'one_dark',
+    'output_theme': 'follow',
     'font_size': 16,
     'wrap_flag': True,
     'debug_flag': True,

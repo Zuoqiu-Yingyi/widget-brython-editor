@@ -18,6 +18,16 @@
 
 
   <script>
+    /* 引入全局主题配置文件 */
+    let themeDefaultStyle = window.parent.document.getElementById('themeDefaultStyle');
+    let themeStyle = window.parent.document.getElementById('themeStyle');
+    let head = document.getElementsByTagName('HEAD').item(0);
+
+    head.appendChild(themeDefaultStyle.cloneNode(true));
+    if (themeStyle != null) {
+      head.appendChild(themeStyle.cloneNode(true));
+    }
+
     function run_js() {
       var cons = document.getElementById("console")
       var jscode = cons.value
@@ -65,9 +75,12 @@
       <tr>
         <td>
           Python code editor uses <a href="https://ace.c9.io/" target="_blank">Ace↗</a>.
-          <a style="float: right; margin-left: 8px;" target="_blank" id="test" href="https://brython.info/tests/index.html">测试↗</a>
-          <a style="float: right; margin-left: 8px;" target="_blank" id="demo" href="https://brython.info/demo.html">示例↗</a>
-          <a style="float: right; margin-left: 8px;" target="_blank" id="document" href="https://brython.info/static_doc/en/intro.html">文档↗</a>
+          <a style="float: right; margin-left: 8px;" target="_blank" id="test"
+            href="https://brython.info/tests/index.html">测试↗</a>
+          <a style="float: right; margin-left: 8px;" target="_blank" id="demo"
+            href="https://brython.info/demo.html">示例↗</a>
+          <a style="float: right; margin-left: 8px;" target="_blank" id="document"
+            href="https://brython.info/static_doc/en/intro.html">文档↗</a>
         </td>
         <td></td>
         <td>

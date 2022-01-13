@@ -77,8 +77,24 @@ trans = {
         'en': 'line wrap',
     },
     'theme': {
-        'zh-cn': '主题',
-        'en': 'theme',
+        'zh-cn': '编辑器主题',
+        'en': 'editor theme',
+    },
+    'theme_output': {
+        'zh-cn': '输出面板主题',
+        'en': 'output pannel theme',
+    },
+    'light': {
+        'zh-cn': '亮色',
+        'en': 'light',
+    },
+    'dark': {
+        'zh-cn': '暗色',
+        'en': 'dark',
+    },
+    'follow': {
+        'zh-cn': '跟随全局',
+        'en': 'follow the global',
     },
     'version_label': {
         'zh-cn': 'Brython 版本: ',
@@ -200,6 +216,7 @@ edit_menu.add_item(
 
 language_menu = setting_menu.add_menu(trans['language'].get(language, trans['language']['zh-cn']))
 theme_menu = setting_menu.add_menu(trans['theme'].get(language, trans['theme']['zh-cn']))
+theme_output_menu = setting_menu.add_menu(trans['theme_output'].get(language, trans['theme_output']['zh-cn']))
 font_size_menu = setting_menu.add_menu(trans['font_size'].get(language, trans['font_size']['zh-cn']))
 
 for k, v in themes.items():
@@ -213,6 +230,19 @@ for i in range(8, 33):
         i,
         callback=lambda *args: editor.change_font_size(args[0].target.innerText),
     )
+
+theme_output_menu.add_item(
+    trans['follow'].get(language, trans['follow']['zh-cn']),
+    callback=lambda *args: editor.change_output_theme('follow'),
+)
+theme_output_menu.add_item(
+    trans['light'].get(language, trans['light']['zh-cn']),
+    callback=lambda *args: editor.change_output_theme('light'),
+)
+theme_output_menu.add_item(
+    trans['dark'].get(language, trans['dark']['zh-cn']),
+    callback=lambda *args: editor.change_output_theme('dark'),
+)
 
 language_menu.add_item(
     '简体中文',

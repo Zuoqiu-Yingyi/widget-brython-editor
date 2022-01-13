@@ -61,6 +61,22 @@ def changeDebugStatus(debug):
         __BRYTHON__.debug = 0
 
 
+# 更改主题
+def change_theme(theme):
+    old_theme = editor.getTheme()
+    if theme != old_theme:
+        editor.setTheme("ace/theme/%s" % theme)
+    storage['brython_editor_theme'] = theme
+
+
+# 更改输出面板主题
+def change_output_theme(theme):
+    element = document['console']
+    element.style.color = config.OUTPUT_THEME.get(theme).get('color')
+    element.style.backgroundColor = config.OUTPUT_THEME.get(theme).get('background-color')
+    storage['brython_output_theme'] = theme
+
+
 def str2bool(s):
     return True if s.lower() == 'true' else False
 
@@ -76,6 +92,9 @@ def reset_src():
         theme = storage['brython_editor_theme'] \
             if (storage is not None and 'brython_editor_theme' in storage) \
             else config.DEFAULT_USER_CONFIG.get('theme')
+        output_theme = storage['brython_output_theme'] \
+            if (storage is not None and 'brython_output_theme' in storage) \
+            else config.DEFAULT_USER_CONFIG.get('output_theme')
         font_size = int(storage['brython_editor_font_size']) \
             if (storage is not None and 'brython_editor_font_size' in storage) \
             else config.DEFAULT_USER_CONFIG.get('font_size')
@@ -90,12 +109,13 @@ def reset_src():
             else config.DEFAULT_USER_CONFIG.get('output_flag')
 
         editor.setValue(py_src)
-        editor.setTheme(f"ace/theme/{theme}")
         editor.setFontSize(font_size)
         document['console'].style.fontSize = f"{font_size}px"
         editor.setOptions({'enableLiveAutocompletion': wrap_flag})
         document['set_debug'].checked = debug_flag
         document['set_output'].checked = output_flag
+        change_theme(theme)
+        change_output_theme(output_theme)
         changeDebugStatus(debug_flag)
         changeOutputPanelStatus(output_flag)
 
@@ -290,14 +310,6 @@ def change_language(lang):
     elts = addr.split("?")
     new_href = f"{head}/{elts[0]}?lang={lang}"
     document.location.href = new_href
-
-
-# 更改主题
-def change_theme(theme):
-    old_theme = editor.getTheme()
-    if theme != old_theme:
-        editor.setTheme("ace/theme/%s" % theme)
-    storage['brython_editor_theme'] = theme
 
 
 # 更改字号
