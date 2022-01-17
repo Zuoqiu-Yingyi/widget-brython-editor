@@ -23,7 +23,9 @@
     let themeStyle = window.parent.document.getElementById('themeStyle');
     let head = document.getElementsByTagName('HEAD').item(0);
 
-    head.appendChild(themeDefaultStyle.cloneNode(true));
+    if (themeDefaultStyle != null) {
+      head.appendChild(themeDefaultStyle.cloneNode(true));
+    }
     if (themeStyle != null) {
       head.appendChild(themeStyle.cloneNode(true));
     }

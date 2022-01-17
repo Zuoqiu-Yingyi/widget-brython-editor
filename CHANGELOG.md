@@ -1,5 +1,7 @@
 # 更改日志/CHANGE LOG
 
+- 修复在非 iframe 模式下获取主题配置文件失败的问题 | Fix an issue where getting a theme configuration file in non-iframe mode.
+
 ## v0.2.4/2022-01-13
 
 - 配色跟随主题切换 | The color scheme follows the global theme.
