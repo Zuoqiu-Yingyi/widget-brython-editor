@@ -207,7 +207,7 @@ def load(ev):
         lambda response:
             __load(response.to_dict().get('data'))
             if response.to_dict().get('code') == 0
-            else print(f"保存运行结果失败, 错误信息{response.to_dict().get('msg')}")
+            else print(f"ERROR:\n{response.to_dict().get('msg')}")
     )
 
 
@@ -216,29 +216,18 @@ def save(ev):
     utils.setBlockAttrs(
         id=config.siyuan_widget_block_id,
         attrs={
+            'custom-code': base64.b64encode(editor.getValue().encode('utf-8')).decode('utf-8'),
             'custom-output': base64.b64encode(
                 document["console"].value.encode('utf-8')
             ).decode('utf-8'),
+            'data-export-md': f"```python\n{editor.getValue()}\n```\n\n```plaintext\n{document['console'].value}\n```",
         }
     ).then(
         lambda response:
-            print("保存运行结果成功")
+            _
             if response.to_dict().get('code') == 0
-            else print(f"保存运行结果失败, 错误信息{response.to_dict().get('msg')}")
+            else print(f"ERROR:\n{response.to_dict().get('msg')}")
     )
-
-    utils.setBlockAttrs(
-        id=config.siyuan_widget_block_id,
-        attrs={
-            'custom-code': base64.b64encode(editor.getValue().encode('utf-8')).decode('utf-8'),
-        }
-    ).then(
-        lambda response:
-            print("保存代码成功")
-            if response.to_dict().get('code') == 0
-            else print(f"保存代码失败, 错误信息{response.to_dict().get('msg')}")
-    )
-
 
 # run a script, in global namespace if in_globals is True
 def run(*args):

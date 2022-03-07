@@ -1,5 +1,7 @@
 # 更改日志/CHANGE LOG
 
+- 保存时将代码与运行结果保存至 `data-export-md` 属性, 在导出时渲染为代码块 | Saves the code and run results to the `data-export-md` attribute when saving, rendering as a block of code on export.
+
 ## v0.2.5/2022-01-17
 
 - 修复在非 iframe 模式下获取主题配置文件失败的问题 | Fix an issue where getting a theme configuration file in non-iframe mode.
