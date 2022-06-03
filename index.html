@@ -42,26 +42,25 @@
 </head>
 
 <body onload="brython()">
-  <!-- <div id="main_container"></div> -->
-  <div id="tools">
-    <span id="menu"></span>
-    <!-- <span class="logo"><a href="/index.html">brython</a></span> -->
-    <!-- <label id="open_file">打开文件</label> -->
-    <input type="file" id="file">
+  <div id="toolsbar">
+    <div id="tools">
+      <span id="menu"></span>
+      <!-- <span class="logo"><a href="/index.html">brython</a></span> -->
+      <!-- <label id="open_file">打开文件</label> -->
+      <input type="file" id="file">
 
-    <a id="save_file" href="#" download="brython.py">保存文件</a>
+      <a id="save_file" href="#" download="brython.py">保存文件</a>
 
-    <label id="debug">&nbsp;调试</label>
-    <input type="checkbox" id="set_debug">
+      <label id="debug">&nbsp;调试</label>
+      <input type="checkbox" id="set_debug">
 
-    <label id="output">&nbsp;输出面板</label>
-    <input type="checkbox" id="set_output">
+      <label id="output">&nbsp;输出面板</label>
+      <input type="checkbox" id="set_output">
 
-    <span id="version_label">&nbsp;Brython 版本: </span>
-    <span id="version"></span>
-
+      <span id="version_label">&nbsp;Brython 版本: </span>
+      <span id="version"></span>
+    </div>
   </div>
-
   <table id="container">
     <tbody>
       <tr>
@@ -77,12 +76,9 @@
       <tr>
         <td>
           Python code editor uses <a href="https://ace.c9.io/" target="_blank">Ace↗</a>.
-          <a style="float: right; margin-left: 8px;" target="_blank" id="test"
-            href="https://brython.info/tests/index.html">测试↗</a>
-          <a style="float: right; margin-left: 8px;" target="_blank" id="demo"
-            href="https://brython.info/demo.html">示例↗</a>
-          <a style="float: right; margin-left: 8px;" target="_blank" id="document"
-            href="https://brython.info/static_doc/en/intro.html">文档↗</a>
+          <a style="float: right; margin-left: 8px;" target="_blank" id="test" href="https://brython.info/tests/index.html">测试↗</a>
+          <a style="float: right; margin-left: 8px;" target="_blank" id="demo" href="https://brython.info/demo.html">示例↗</a>
+          <a style="float: right; margin-left: 8px;" target="_blank" id="document" href="https://brython.info/static_doc/en/intro.html">文档↗</a>
         </td>
         <td></td>
         <td>

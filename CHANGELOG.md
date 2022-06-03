@@ -1,5 +1,10 @@
 # 更改日志/CHANGE LOG
 
+## v0.2.7/2022-06-03
+
+- 更新 Brython 版本至 [3.10.6](https://github.com/brython-dev/brython/releases/tag/3.10.6) / Update Brython version to [3.10.6](https://github.com/brython-dev/brython/releases/tag/3.10.6).
+- 调整菜单栏样式 | Adjust the style of the menu bar.
+
 ## v0.2.6/2022-03-07
 
 - 保存时将代码与运行结果保存至 `data-export-md` 属性, 在导出时渲染为代码块 | Saves the code and run results to the `data-export-md` attribute when saving, rendering as a block of code on export.

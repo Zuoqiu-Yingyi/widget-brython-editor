@@ -42,14 +42,6 @@ body {
   height: 100%;
 }
 
-#tools {
-  position: absolute;
-  background-color: #f0edee;
-  z-index: 8;
-  top: 0;
-  left: 0;
-}
-
 /* #banner_row {
   background-color: var(--clear-2);
   font-family: Montserrat, Arial;
@@ -107,6 +99,7 @@ body {
   border-width: 0px 0px 0px 1px;
   border-color: var(--brython-menu-color);
   border-spacing: 0;
+  z-index: 9;
 }
 
 /* TR for a submenu item row */
