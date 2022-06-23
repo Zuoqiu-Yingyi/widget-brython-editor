@@ -20,7 +20,7 @@ It is now on the shelves of the [Siyuan Notes Community Bazaar](https://github.c
 
 ## 预览 | PREVIEW
 
-![preview-jsdelivr](https://cdn.jsdelivr.net/gh/Zuoqiu-Yingyi/widget-brython-editor/preview.png)
+![preview-relative](./preview.png)
 ![preview-location](/widgets/brython-editor/preview.png)
 
 ## 功能 | FUNCTION
