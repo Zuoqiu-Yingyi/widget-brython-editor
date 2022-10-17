@@ -1,7 +1,7 @@
 from browser import window
 import json
 
-from package import config
+from . import config
 
 
 def getBlockAttrs(id):

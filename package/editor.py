@@ -8,7 +8,7 @@ import javascript
 from browser import document, window, bind, html
 import browser.widgets.dialog as dialog
 
-from package import utils, config
+from . import utils, config
 
 href = document.location.href
 protocol, rest = href.split("://")
