@@ -4,6 +4,7 @@
 - 调整包引用路径 | Adjusted the path of package reference.
 - 更新 Brython 版本至 [3.11.0](https://github.com/brython-dev/brython/releases/tag/3.11.0) / Update Brython version to [3.11.0](https://github.com/brython-dev/brython/releases/tag/3.11.0).
 - 更新 Brython 版本至 [3.11.1](https://github.com/brython-dev/brython/releases/tag/3.11.1) / Update Brython version to [3.11.1](https://github.com/brython-dev/brython/releases/tag/3.11.1).
+- 调整导出的 markdown 内容 / Adjust the exported markdown content.
 
 ## v0.2.7/2022-06-03
 

@@ -213,6 +213,7 @@ def load(ev):
 
 # 保存代码与输出结果
 def save(ev):
+    ial = '{: ligatures="true" linenumber="true" linewrap="true" }'
     utils.setBlockAttrs(
         id=config.siyuan_widget_block_id,
         attrs={
@@ -220,11 +221,11 @@ def save(ev):
             'custom-output': base64.b64encode(
                 document["console"].value.encode('utf-8')
             ).decode('utf-8'),
-            'data-export-md': f"```python\n{editor.getValue()}\n```\n\n```plaintext\n{document['console'].value}\n```",
+            'data-export-md': f"```python\n{editor.getValue()}\n```\n{ial}\n\n```plaintext\n{document['console'].value}\n```\n{ial}",
         }
     ).then(
         lambda response:
-            _
+            None
             if response.to_dict().get('code') == 0
             else print(f"ERROR:\n{response.to_dict().get('msg')}")
     )
