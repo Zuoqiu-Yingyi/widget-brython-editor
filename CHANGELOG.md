@@ -1,5 +1,7 @@
 # 更改日志/CHANGE LOG
 
+## v0.2.8/2023-02-16
+
 - 更新 Brython 版本至 [3.10.7](https://github.com/brython-dev/brython/releases/tag/3.10.7) / Update Brython version to [3.10.7](https://github.com/brython-dev/brython/releases/tag/3.10.7).
 - 调整包引用路径 | Adjusted the path of package reference.
 - 更新 Brython 版本至 [3.11.0](https://github.com/brython-dev/brython/releases/tag/3.11.0) / Update Brython version to [3.11.0](https://github.com/brython-dev/brython/releases/tag/3.11.0).
